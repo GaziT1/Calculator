@@ -1,14 +1,14 @@
-#output
+input[name= "output"]
 {
 	height:40px;
-	width:31.1%;
+	width:30.6%;
 	color:white;
 	background-color:black;
 	font-size:200%;
 	
 }
 
-#black
+button[name= "black"]
 {
 	height:30px;
 	width:5%;
@@ -17,7 +17,7 @@
 	font-size:100%;
 }
 
-#grey
+button[name= "grey"]
 {
 	height:30px;
 	width:5%;
@@ -26,16 +26,16 @@
 	font-size:100%;
 }
 
-#greylong
+button[name= "greylong"]
 {
 	height:30px;
-	width:10.4%;
+	width:10.21%;
 	color:white;
 	background-color:#c0c0c0;
 	font-size:100%;
 }
 
-#blue
+button[name= "blue"]
 {
 	height:30px;
 	width:5%;
@@ -44,7 +44,7 @@
 	font-size:100%;
 }
 
-#darkgrey
+button[name= "darkgrey"]
 {
 	height:30px;
 	width:5%;
@@ -53,10 +53,10 @@
 	font-size:100%;
 }
 
-#darkgreylong
+button[name= "darkgreylong"]
 {
 	height:30px;
-	width:10.4%;
+	width:10.21%;
 	color:white;
 	background-color:#808080;
 	font-size:100%;
