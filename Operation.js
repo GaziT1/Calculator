@@ -1,67 +1,67 @@
 window.addEventListener("load",addListener);
-var output = document.getElementById("output").value;
+var output = document.getElementById("output");
 function addListener()
 {
 	document.getElementById("output").disabled = true;
-	document.getElementByName("btnseven").addEventListener("click",Seven);
-    document.getElementByName("btneight").addEventListener("click",Eight);
- 	document.getElementByName("btnnine").addEventListener("click",Nine);
-	document.getElementByName("btnfour").addEventListener("click",Four);
-	document.getElementByName("btnfive").addEventListener("click",Five);
-	document.getElementByName("btnsix").addEventListener("click",Six);
-	document.getElementByName("btnone").addEventListener("click",One);
-	document.getElementByName("btntwo").addEventListener("click",Two);
-	document.getElementByName("btnthree").addEventListener("click",Three);
-	document.getElementByName("btnzero").addEventListener("click",Zero);
+	//document.getElementById("btnseven").addEventListener("click",Seven);
+   // document.getElementById("btneight").addEventListener("click",Eight);
+ 	//document.getElementById("btnnine").addEventListener("click",Nine);
+	//document.getElementById("btnfour").addEventListener("click",Four);
+	//document.getElementById("btnfive").addEventListener("click",Five);
+	//document.getElementById("btnsix").addEventListener("click",Six);
+//	document.getElementById("btnone").addEventListener("click",One);
+	//document.getElementById("btntwo").addEventListener("click",Two);
+	//document.getElementById("btnthree").addEventListener("click",Three);
+	document.getElementById("btnzero").addEventListener("click",Zero);
 
 }
 
 function Zero()
 {
-	document.getElementById("output").value += "0";
+	output.value += "0";
 }
 
 function One()
 {
-	document.getElementById("output").value += "1";
+	output.value += "1";
 }
 
 function Two()
 {
-	document.getElementById("output").value += "2";
+	output.value += "2";
 }
 
 function Three()
 {
-	document.getElementById("output").value += "3";
+	output.value += "3";
 }
 
 function Four()
 {
-	document.getElementById("output").value += "4";
+	output.value += "4";
 }
 
 function Five()
 {
-	document.getElementById("output").value += "5";
+	output.value += "5";
 }
 
 function Six()
 {
-	document.getElementById("output").value += "6";
+	output.value += "6";
 }
 
 function Seven()
 {
-	document.getElementById("output").value += "7";
+	output.value += "7";
 }
 
 function Eight()
 {
-	document.getElementById("output").value += "8";
+	output.value += "8";
 }
 
 function Nine()
 {
-	document.getElementById("output").value += "9";
+	output.value += "9";
 }
