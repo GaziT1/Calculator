@@ -1,4 +1,5 @@
 window.addEventListener("load",addListener);
+var operation; num1; num2;
 function addListener()
 {
 	document.getElementById("output").disabled = true;
@@ -16,30 +17,28 @@ function addListener()
 	document.getElementById("btnequals").addEventListener("click",Equals);
 	document.getElementById("btnadd").addEventListener("click",Plus);
 	document.getElementById("btnsub").addEventListener("click",Minus);
-	document.getElementById("btncos").addEventListener("click",Mult);
+	document.getElementById("btnmult").addEventListener("click",Mult);
 	document.getElementById("btndiv").addEventListener("click",Div);
-    document.getElementById("btnclear").addEventListener("click",answeradd);
-	document.getElementById("btnpi").addEventListener("click",answeradd);
-	document.getElementById("btnsqrt").addEventListener("click",answersub);
-	document.getElementById("btnsq").addEventListener("click",answermult);
-	document.getElementById("btnpercent").addEventListener("click",answerdiv);
-	document.getElementById("btnbackspace").addEventListener("click",clear);
-	document.getElementById("btnlog").addEventListener("click",answermult);
-	document.getElementById("btnsin").addEventListener("click",answerdiv);
-	document.getElementById("btnexp").addEventListener("click",clear);
-	document.getElementById("btnpower").addEventListener("click",answeradd);
-	document.getElementById("btnnegpos").addEventListener("click",answersub);
-	document.getElementById("btnln").addEventListener("click",answerdiv);
-	document.getElementById("btnmult").addEventListener("click",answerdiv);
-	document.getElementById("btnfactorial").addEventListener("click",clear);
-	document.getElementById("btntan").addEventListener("click",answeradd);
-	document.getElementById("btnradians").addEventListener("click",answermult);
-	document.getElementById("btndegrees").addEventListener("click",answermult);
+    document.getElementById("btnclear").addEventListener("click",Clear);
+	document.getElementById("btnpi").addEventListener("click",Pi);
+	document.getElementById("btnsqrt").addEventListener("click",Sqrt);
+	document.getElementById("btnsq").addEventListener("click",Sq);
+	document.getElementById("btnpercent").addEventListener("click",Percent);
+	document.getElementById("btnbackspace").addEventListener("click",Backspace);
+	document.getElementById("btnlog").addEventListener("click",Log);
+	document.getElementById("btnsin").addEventListener("click",Sin);
+	document.getElementById("btnexp").addEventListener("click",Exp);
+	document.getElementById("btnpower").addEventListener("click",Power);
+	document.getElementById("btnnegpos").addEventListener("click",NegPos);
+	document.getElementById("btnln").addEventListener("click",Ln);
+	document.getElementById("btncos").addEventListener("click",Cos);
+	document.getElementById("btnfactorial").addEventListener("click",Factorial);
+	document.getElementById("btntan").addEventListener("click",Tan);
+	document.getElementById("btnradians").addEventListener("click",Radians);
+	document.getElementById("btndegrees").addEventListener("click",Degrees);
 	
 }
-function Symbolcheck(){Output(); if (output == ""){document.getElementById("output").disabled = true;} else {document.getElementById("output").disabled = false;}}
 function Output(){var output = document.getElementById("output");}
-function Outputnum(){var outputnumber = parseFloat(0);}
 function Zero(){Output(); output.value += "0";}
 function One(){Output(); output.value += "1";}
 function Two(){Output(); output.value += "2";}
@@ -50,9 +49,188 @@ function Six(){Output(); output.value += "6";}
 function Seven(){Output(); output.value += "7";}
 function Eight(){Output(); output.value += "8";}
 function Nine(){Output(); output.value += "9";}
-function Point(){Output(); output.value += "."; alert("No more than one point."); document.getElementById("btnpoint").disabled = true;}
-function Equals(){output.value = outputOutputnum}
-function Plus(){Symbolcheck(); output.value += "+";}
-function Minus(){Symbolcheck(); output.value += "-";}
-function Mult(){Symbolcheck(); Output(); output.value += "x";}
-function Div(){Symbolcheck(); output.value += "÷";}
+function Point() {
+    Output();
+    if (!output.value.includes(".")) {
+        output.value += ".";
+    } else {
+        alert("No more than one point.");
+    }
+}
+
+function Equals() {
+    Output();
+    num2 = parseFloat(output.value);
+    if (isNaN(num1) || isNaN(num2)) {
+        alert("Invalid input.");
+        
+    }
+    if (operation === "+") {
+        output.value = num1 + num2;
+    } else if (operation === "-") {
+        output.value = num1 - num2;
+    } else if (operation === "*") {
+        output.value = num1 * num2;
+    } else if (operation === "/") {
+        if (num2 === 0) {
+            alert("Cannot divide by zero.");
+            
+        }
+        output.value = num1 / num2;
+    } else {
+        alert("Invalid operation.");
+        
+    }
+    num1 = parseFloat(output.value);
+    operation = null;
+}
+
+function Plus() {
+    Output();
+    num1 = parseFloat(output.value);
+    operation = "+";
+    output.value = "";
+}
+
+function Minus() {
+    Output();
+    num1 = parseFloat(output.value);
+    operation = "-";
+    output.value = "";
+}
+
+function Mult() {
+    Output();
+    num1 = parseFloat(output.value);
+    operation = "*";
+    output.value = "";
+}
+
+function Div() {
+    Output();
+    num1 = parseFloat(output.value);
+    operation = "/";
+    output.value = "";
+}
+
+function Clear() {
+    Output();
+    output.value = "";
+    num1 = null;
+    num2 = null;
+    operation = null;
+}
+
+function Pi() {
+    Output();
+    output.value = Math.PI;
+}
+
+function Sqrt() {
+    Output();
+    num1 = parseFloat(output.value);
+    if (num1 < 0) {
+        alert("Cannot calculate square root of a negative number.");
+        
+    }
+    output.value = Math.sqrt(num1);
+}
+
+function Sq() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = num1 * num1;
+}
+
+function Percent() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = num1 / 100;
+}
+
+function Backspace() {
+    Output();
+    output.value = output.value.slice(0, -1);
+}
+function Log() {
+    Output();
+    num1 = parseFloat(output.value);
+    if (num1 <= 0) {
+        alert("Cannot calculate logarithm of zero or a negative number.");
+        
+    }
+    output.value = Math.log10(num1);
+}
+
+function Sin() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = Math.sin(num1);
+}
+
+function Exp() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = Math.exp(num1);
+}
+
+function Power() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = "";
+}
+
+function NegPos() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = -num1;
+}
+
+function Ln() {
+    Output();
+    num1 = parseFloat(output.value);
+    if (num1 <= 0) {
+        alert("Cannot calculate natural logarithm of zero or a negative number.");
+        
+    }
+    output.value = Math.log(num1);
+}
+
+function Cos() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = Math.cos(num1);
+}
+
+function Factorial() {
+    Output();
+    num1 = parseInt(output.value);
+    if (num1 < 0) {
+        alert("Cannot calculate factorial of a negative number.");
+        
+    }
+    result = 1;
+    for (num2 = 2; num2 <= num1; num2++) {
+        result *= num2;
+    
+    }
+    output.value = result;
+}
+
+function Tan() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = Math.tan(num1);
+}
+
+function Radians() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = num1 * Math.PI / 180;
+}
+
+function Degrees() {
+    Output();
+    num1 = parseFloat(output.value);
+    output.value = num1 * 180 / Math.PI;
+}
