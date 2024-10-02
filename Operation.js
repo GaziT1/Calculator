@@ -1,5 +1,6 @@
 window.addEventListener("load",addListener);
 var operation; num1; num2;
+function Output(){var output = document.getElementById("output");}
 function addListener()
 {
 	document.getElementById("output").disabled = true;
@@ -14,17 +15,17 @@ function addListener()
 	document.getElementById("btnthree").addEventListener("click",Three);
 	document.getElementById("btnzero").addEventListener("click",Zero);
 	document.getElementById("btnpoint").addEventListener("click",Point);
-	document.getElementById("btnequals").addEventListener("click",Equals);
 	document.getElementById("btnadd").addEventListener("click",Plus);
 	document.getElementById("btnsub").addEventListener("click",Minus);
 	document.getElementById("btnmult").addEventListener("click",Mult);
 	document.getElementById("btndiv").addEventListener("click",Div);
+	document.getElementById("btnequals").addEventListener("click",Equals);
     document.getElementById("btnclear").addEventListener("click",Clear);
+	document.getElementById("btnbackspace").addEventListener("click",Backspace);
 	document.getElementById("btnpi").addEventListener("click",Pi);
 	document.getElementById("btnsqrt").addEventListener("click",Sqrt);
 	document.getElementById("btnsq").addEventListener("click",Sq);
 	document.getElementById("btnpercent").addEventListener("click",Percent);
-	document.getElementById("btnbackspace").addEventListener("click",Backspace);
 	document.getElementById("btnlog").addEventListener("click",Log);
 	document.getElementById("btnsin").addEventListener("click",Sin);
 	document.getElementById("btnexp").addEventListener("click",Exp);
@@ -38,199 +39,167 @@ function addListener()
 	document.getElementById("btndegrees").addEventListener("click",Degrees);
 	
 }
-function Output(){var output = document.getElementById("output");}
-function Zero(){Output(); output.value += "0";}
-function One(){Output(); output.value += "1";}
-function Two(){Output(); output.value += "2";}
-function Three(){Output(); output.value += "3";}
-function Four(){Output(); output.value += "4";}
-function Five(){Output(); output.value += "5";}
-function Six(){Output(); output.value += "6";}
-function Seven(){Output(); output.value += "7";}
-function Eight(){Output(); output.value += "8";}
-function Nine(){Output(); output.value += "9";}
-function Point() {
-    Output();
-    if (!output.value.includes(".")) {
-        output.value += ".";
-    } else {
-        alert("No more than one point.");
-    }
+function Zero(){ Output(); output.value += "0";}
+function One(){ Output(); output.value += "1";}
+function Two(){ Output(); output.value += "2";}
+function Three(){ Output(); output.value += "3";}
+function Four(){ Output(); output.value += "4";}
+function Five(){ Output(); output.value += "5";}
+function Six(){ Output(); output.value += "6";}
+function Seven(){ Output(); output.value += "7";}
+function Eight(){ Output(); output.value += "8";}
+function Nine(){ Output(); output.value += "9";}
+function Point()
+{ Output();
+	if (output.value.includes("."))
+	{
+		alert("You can't have two decimals in one number");
+	}
+	else
+	{
+		output.value += ".";
+	}
+}
+function Plus()
+{ Output();
+	operation = "+";
+	num1 = output.value;
+	output.value = "";
+}
+function Minus()
+{ Output();
+	operation = "-";
+	num1 = output.value;
+	output.value = "";
+}
+function Mult()
+{ Output();
+	operation = "*";
+	num1 = output.value;
+	output.value = "";
+}
+function Div()
+{ Output();
+	operation = "/";
+	num1 = output.value;
+	output.value = "";
 }
 
-function Equals() {
-    Output();
-    num2 = parseFloat(output.value);
-    if (isNaN(num1) || isNaN(num2)) {
-        alert("Invalid input.");
-        
-    }
-    if (operation === "+") {
-        output.value = num1 + num2;
-    } else if (operation === "-") {
-        output.value = num1 - num2;
-    } else if (operation === "*") {
-        output.value = num1 * num2;
-    } else if (operation === "/") {
-        if (num2 === 0) {
-            alert("Cannot divide by zero.");
-            
-        }
-        output.value = num1 / num2;
-    } else {
-        alert("Invalid operation.");
-        
-    }
-    num1 = parseFloat(output.value);
-    operation = null;
+function Equals()
+{ Output();
+	num2 = output.value;
+	if (operation == "+")
+	{
+		output.value = parseFloat(num1) + parseFloat(num2);
+	}
+	if (operation == "-")
+	{
+		output.value = parseFloat(num1) - parseFloat(num2);
+	}
+	if (operation == "*")
+	{
+		output.value = parseFloat(num1) * parseFloat(num2);
+	}
+	if (operation == "/")
+	{
+		output.value = parseFloat(num1) / parseFloat(num2);
+	}
 }
 
-function Plus() {
-    Output();
-    num1 = parseFloat(output.value);
-    operation = "+";
-    output.value = "";
+function Clear()
+{ Output();
+	output.value = "";
+}
+function Backspace()
+{ Output();
+	output.value = output.value.slice(0,-1);
 }
 
-function Minus() {
-    Output();
-    num1 = parseFloat(output.value);
-    operation = "-";
-    output.value = "";
+function Pi()
+{ Output();
+	output.value = Math.PI;
 }
 
-function Mult() {
-    Output();
-    num1 = parseFloat(output.value);
-    operation = "*";
-    output.value = "";
+function Sqrt()
+{ Output();
+	output.value = Math.sqrt(parseFloat(output.value));
 }
 
-function Div() {
-    Output();
-    num1 = parseFloat(output.value);
-    operation = "/";
-    output.value = "";
+function Sq()
+{ Output();
+	output.value = Math.pow(parseFloat(output.value),2);
 }
 
-function Clear() {
-    Output();
-    output.value = "";
-    num1 = null;
-    num2 = null;
-    operation = null;
+function Percent()
+{ Output();
+	output.value = parseFloat(output.value)/100;
 }
 
-function Pi() {
-    Output();
-    output.value = Math.PI;
+function Log()
+{ Output();
+	output.value = Math.log10(parseFloat(output.value));
 }
-
-function Sqrt() {
-    Output();
-    num1 = parseFloat(output.value);
-    if (num1 < 0) {
-        alert("Cannot calculate square root of a negative number.");
-        
-    }
-    output.value = Math.sqrt(num1);
-}
-
-function Sq() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = num1 * num1;
-}
-
-function Percent() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = num1 / 100;
-}
-
-function Backspace() {
-    Output();
-    output.value = output.value.slice(0, -1);
-}
-function Log() {
-    Output();
-    num1 = parseFloat(output.value);
-    if (num1 <= 0) {
-        alert("Cannot calculate logarithm of zero or a negative number.");
-        
-    }
-    output.value = Math.log10(num1);
-}
-
-function Sin() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = Math.sin(num1);
-}
-
-function Exp() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = Math.exp(num1);
+function Exp()
+{ Output();
+	output.value = Math.exp(parseFloat(output.value));
 }
 
 function Power() {
     Output();
     num1 = parseFloat(output.value);
-    output.value = "";
-}
-
-function NegPos() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = -num1;
-}
-
-function Ln() {
-    Output();
-    num1 = parseFloat(output.value);
-    if (num1 <= 0) {
-        alert("Cannot calculate natural logarithm of zero or a negative number.");
-        
+    if (output.value !== "") {
+        num2 = parseFloat(output.value);
+        output.value = Math.pow(num2, num1);
     }
-    output.value = Math.log(num1);
 }
 
-function Cos() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = Math.cos(num1);
+function NegPos()
+{ Output();
+	output.value = -parseFloat(output.value);
 }
 
-function Factorial() {
-    Output();
-    num1 = parseInt(output.value);
+function Ln()
+{ Output();
+	output.value = Math.log(parseFloat(output.value));
+}
+
+function Cos()
+{ Output();
+	output.value = Math.cos(parseFloat(output.value));
+}
+
+function Sin()
+{ Output();
+	output.value = Math.sin(parseFloat(output.value));	
+}
+
+function Factorial()
+{ Output();
+	num1 = parseInt(output.value);
     if (num1 < 0) {
         alert("Cannot calculate factorial of a negative number.");
         
     }
     result = 1;
-    for (num2 = 2; num2 <= num1; num2++) {
+    for (num2 = 2; num2 <= num1; num2++) 
+	{
         result *= num2;
     
     }
     output.value = result;
 }
 
-function Tan() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = Math.tan(num1);
+function Tan()
+{ Output();
+	output.value = Math.tan(parseFloat(output.value));
 }
 
-function Radians() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = num1 * Math.PI / 180;
+function Radians()
+{ Output();
+	output.value = parseFloat(output.value) * Math.PI / 180;
 }
 
-function Degrees() {
-    Output();
-    num1 = parseFloat(output.value);
-    output.value = num1 * 180 / Math.PI;
+function Degrees()
+{ Output();
+	output.value = parseFloat(output.value) * 180 / Math.PI;
 }
